@@ -931,7 +931,7 @@ struct clk_change_info{
 #define MESON_CPU_SLEEP		1
 #define MESON_CPU_WAKEUP	2
 
-inline void meson_set_cpu_ctrl_reg(int value)
+void meson_set_cpu_ctrl_reg(int value)
 {
 	spin_lock(&clockfw_lock);
 	aml_write_reg32(MESON_CPU_CONTROL_REG, value);
