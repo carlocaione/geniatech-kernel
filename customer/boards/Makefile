@@ -1,0 +1,81 @@
+#
+# Makefile to support customer boards
+#
+
+# Tablet Config Start
+obj-$(CONFIG_MACH_MESON6_G04) += board-m6g04.o
+obj-$(CONFIG_MACH_MESON6_G04) += board-m6g04-panel.o
+obj-$(CONFIG_MACH_MESON6_G24) += board-m6g24.o
+obj-$(CONFIG_MACH_MESON6_G24) += board-m6g24-panel.o
+obj-$(CONFIG_MACH_MESON6_G34) += board-m6g34.o
+obj-$(CONFIG_MACH_MESON6_G34) += board-m6g34-panel.o
+obj-$(CONFIG_MACH_MESON6_G33_NEW) += board-m6g33-new.o
+obj-$(CONFIG_MACH_MESON6_G33_NEW) += board-m6g33-panel.o
+obj-$(CONFIG_MACH_MESON6_G33_REFAM701) += board-g33refam701-new.o
+obj-$(CONFIG_MACH_MESON6_G33_REFAM701) += board-m6g33-panel.o
+obj-$(CONFIG_MACH_MESON6_G33_1212NEW) += board-m6g33-1212New.o
+obj-$(CONFIG_MACH_MESON6_G33_1212NEW) += board-m6g33-1212New-panel.o
+obj-$(CONFIG_MACH_MESON6_G33_MID7065C) += board-m6g33-MID7065C.o
+obj-$(CONFIG_MACH_MESON6_G33_MID7065C) += board-m6g33-MID7065C-panel.o
+obj-$(CONFIG_MACH_MESON6_G12_M806A2) += board-m6g12-M806A2.o
+obj-$(CONFIG_MACH_MESON6_G12_M806A2) += board-m6g12-M806A2-panel.o
+obj-$(CONFIG_MACH_MESON6_G12_M1006A1) += board-m6g12-M1006A1.o
+obj-$(CONFIG_MACH_MESON6_G12_M1006A1) += board-m6g12-M1006A1-panel.o
+obj-$(CONFIG_MACH_MESON6_G02_D7) += board-m6g02-d7.o
+obj-$(CONFIG_MACH_MESON6_G02_D7) += board-m6g02-d7-panel.o
+obj-$(CONFIG_MACH_MESON6_G02_D7IS) += board-m6g02-d7is.o
+obj-$(CONFIG_MACH_MESON6_G02_D7IS) += board-m6g02-d7is-panel.o
+obj-$(CONFIG_MACH_MESON6_G02_D8) += board-m6g02-d8.o
+obj-$(CONFIG_MACH_MESON6_G02_D8) += board-m6g02-d8-panel.o
+obj-$(CONFIG_MACH_MESON6_G02_TD7100) += board-m6g02-td7100.o
+obj-$(CONFIG_MACH_MESON6_G02_TD7100) += board-m6g02-td7100-panel.o
+obj-$(CONFIG_MACH_MESON6_G02_826DS) += board-m6g02-826ds.o
+obj-$(CONFIG_MACH_MESON6_G02_826DS) += board-m6g02-826ds-panel.o
+obj-$(CONFIG_MACH_MESON6_G02_D9) += board-m6g02_d9.o
+obj-$(CONFIG_MACH_MESON6_G02_D9) += board-m6g02_d9-panel.o
+obj-$(CONFIG_MACH_MESON6_G26_M777ND) += board-m6g26-M777ND.o
+obj-$(CONFIG_MACH_MESON6_G26_M777ND) += board-m6g26-M777ND-panel.o
+obj-$(CONFIG_MACH_MESON6_G39) += board-m6g39.o
+obj-$(CONFIG_MACH_MESON6_G39) += board-m6g39-panel.o
+obj-$(CONFIG_MACH_MESON6_G39EMMC7) += board-m6g39emmc7.o
+obj-$(CONFIG_MACH_MESON6_G39EMMC7) += board-m6g39emmc7-panel.o
+# Tablet Config End
+
+obj-$(CONFIG_MACH_MESON6_G02) += board-m6g02.o
+obj-$(CONFIG_MACH_MESON6_G02_RECOVERY) += board-m6g02.o
+obj-$(CONFIG_MACH_MESON6_G02_JB42) += board-m6g02.o
+obj-$(CONFIG_MACH_MESON6_G02_DONGLE) += board-m6g02-dongle.o
+obj-$(CONFIG_MACH_MESON6_G20) += board-m6g20.o
+obj-$(CONFIG_MACH_MESON6_G28) += board-m6g28.o
+obj-$(CONFIG_MACH_MESON6_G29) += board-m6g29.o
+obj-$(CONFIG_MACH_MESON6_G18) += board-m6g18.o
+obj-$(CONFIG_MACH_MESON6_G18_RECOVERY) += board-m6g18.o
+obj-$(CONFIG_MACH_MESON6_G38) += board-m6g38.o
+obj-$(CONFIG_MACH_MESON6_G38) += board-m6g38-panel.o
+obj-$(CONFIG_MACH_MESON6_G31) += board-m6g31.o
+obj-$(CONFIG_MACH_MESON6_G31) += board-m6g31-panel.o
+obj-$(CONFIG_MACH_MESON6_G35) += board-m6g35.o
+obj-$(CONFIG_MACH_MESON6_G40) += board-m6g40.o
+obj-$(CONFIG_MACH_MESON6_G38_97203) += board-m6g38-97203.o
+obj-$(CONFIG_MACH_MESON6_G38_97203) += board-m6g38-97203-panel.o
+obj-$(CONFIG_MACH_MESON6_G19) += board-m6g19.o
+obj-$(CONFIG_MACH_MESON6_G38_7203) += board-m6g38-7203.o
+obj-$(CONFIG_MACH_MESON6_G38_7203) += board-m6g38-7203-panel.o
+obj-$(CONFIG_MACH_MESON6_G38_10203) += board-m6g38-10203.o
+obj-$(CONFIG_MACH_MESON6_G38_10203) += board-m6g38-10203-panel.o
+obj-$(CONFIG_MACH_MESON6_G11_E8HDS) += board-m6g11-e8hds.o
+obj-$(CONFIG_MACH_MESON6_G11_E8HDS) += board-m6g11-e8hds-panel.o
+obj-$(CONFIG_MACH_MESON6_G30_N87A) += board-m6g30-N87A-panel.o
+obj-$(CONFIG_MACH_MESON6_G30_N87A) += board-m6g30-N87A.o
+obj-$(CONFIG_MACH_MESON6_G30_N87A-512M) += board-m6g30-N87A-512M-panel.o
+obj-$(CONFIG_MACH_MESON6_G30_N87A-512M) += board-m6g30-N87A-512M.o
+obj-$(CONFIG_MACH_MESON6_G30_N78A) += board-m6g30-N78A-panel.o
+obj-$(CONFIG_MACH_MESON6_G30_N78A) += board-m6g30-N78A.o
+obj-$(CONFIG_MACH_MESON6_G30_N87A_IPS) += board-m6g30-N87A-IPS-panel.o
+obj-$(CONFIG_MACH_MESON6_G30_N87A_IPS) += board-m6g30-N87A-IPS.o
+obj-$(CONFIG_MACH_MESON6_G17_T102) += board-m6g17-t102.o
+obj-$(CONFIG_MACH_MESON6_G17_T102) += board-m6g17-t102-panel.o
+obj-$(CONFIG_MACH_MESON6_G11_E8HD_EMMC) += board-m6g11-e8hd-emmc.o
+obj-$(CONFIG_MACH_MESON6_G11_E8HD_EMMC) += board-m6g11-e8hd-emmc-panel.o
+obj-$(CONFIG_MACH_MESON6_G11_A1002) += board-m6g11-a1002.o
+obj-$(CONFIG_MACH_MESON6_G11_A1002) += board-m6g11-a1002-panel.o

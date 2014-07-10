@@ -1,0 +1,5 @@
+./power/fbearlysuspend.c:static int __init android_power_init(void)
+./power/fbearlysuspend.c:		pr_err("android_power_init: sysfs_create_group failed\n");
+./power/fbearlysuspend.c:static void  __exit android_power_exit(void)
+./power/fbearlysuspend.c:module_init(android_power_init);
+./power/fbearlysuspend.c:module_exit(android_power_exit);

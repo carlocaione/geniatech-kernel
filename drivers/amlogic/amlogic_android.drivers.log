@@ -1,0 +1,708 @@
+amports/video.c:static int android_clone_rate = 30;
+amports/video.c:        set_clone_frame_rate(android_clone_rate, 200);
+amports/video.c:    set_clone_frame_rate(android_clone_rate, 0);
+amports/video.c:MODULE_PARM_DESC(android_clone_rate, "\n android_clone_rate\n");
+amports/video.c:module_param(android_clone_rate, uint, 0664);
+hdmi/hdmi_tx/hdmi_tx.c:static struct switch_dev sdev = {	// android ics switch device
+hdmi/hdmi_tx/hdmi_tx.c:static struct switch_dev hdcp_dev = {	// android ics switch device
+hdmi/hdmi_tx/hdmi_tx_compliance.h:// root@android:/ # cat /sys/class/amhdmitx/amhdmitx0/edid
+hdmi/hdmi_tx/hdmi_tx_cec.c:struct switch_dev lang_dev = {	// android ics switch device
+input/touchscreen/goodix_touch.c:	ts->input_dev->absbit[0] = BIT(ABS_X) | BIT(ABS_Y); // for android
+input/touchscreen/goodix_touch.c:	//#ifdef GOODIX_MULTI_TOUCH	//used by android 1.x for multi-touch, not realized
+input/touchscreen/uor7x5x.c:			        //printk(KERN_ERR "%s:report dual touch for android (x1,y1)=(%d,%d) (x2,y2)=(%d,%d)  !!!\n",__FUNCTION__, x1, y1, x2, y2);
+input/holdkey/aml_holdkey.c:    // android ics switch device    
+input/simcard_detect/simcard_detect.c:static struct switch_dev sdev; // for android
+input/simcard_detect/simcard_detect.c:    sdev.name = "simcard_status";//for report headphone to android
+wifi/rtl8xxx_DU/os_dep/osdep_service.c:static android_suspend_lock_t rtw_suspend_lock ={
+wifi/rtl8xxx_DU/os_dep/osdep_service.c:	android_init_suspend_lock(&rtw_suspend_lock);
+wifi/rtl8xxx_DU/os_dep/osdep_service.c:	android_uninit_suspend_lock(&rtw_suspend_lock);
+wifi/rtl8xxx_DU/os_dep/osdep_service.c:	android_lock_suspend(&rtw_suspend_lock);
+wifi/rtl8xxx_DU/os_dep/osdep_service.c:	android_unlock_suspend(&rtw_suspend_lock);
+wifi/rtl8xxx_DU/os_dep/linux/ioctl_cfg80211.c:	if((wdev_to_priv(padapter->rtw_wdev))->bandroid_scan == _FALSE)
+wifi/rtl8xxx_DU/os_dep/linux/ioctl_cfg80211.c:	pwdev_priv->bandroid_scan = _FALSE;
+wifi/rtl8xxx_DU/os_dep/linux/os_intfs.c:	wdev_to_priv(padapter->rtw_wdev)->bandroid_scan = _FALSE;
+wifi/rtl8xxx_DU/os_dep/linux/os_intfs.c:	wdev_to_priv(padapter->rtw_wdev)->bandroid_scan = _FALSE;
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:#include <rtw_android.h>
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:typedef struct android_wifi_priv_cmd {
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:} android_wifi_priv_cmd;
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c: * wl_android_wifi_on
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_cmdstr_to_num(char *cmdstr)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		if(0 == strnicmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_get_macaddr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_set_country(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:	char *country_code = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_COUNTRY]) + 1;
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_get_p2p_dev_addr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_set_block(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:	char *block_value = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_BLOCK]) + 1;
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:	cmd_num = rtw_android_cmdstr_to_num(command);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_on(net);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_off(net);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		(wdev_to_priv(net->ieee80211_ptr))->bandroid_scan = _TRUE;	
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_macaddr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_block(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_country(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:		int skip = strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_SET_AP_WPS_P2P_IE]) + 3;
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:int wl_android_wifictrl_func_add(void)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:void wl_android_wifictrl_func_del(void)
+wifi/rtl8xxx_DU/os_dep/linux/rtw_android.c:void *wl_android_prealloc(int section, unsigned long size)
+wifi/rtl8xxx_DU/os_dep/linux/ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_DU/os_dep/linux/ioctl_linux.c:	i = rtw_android_cmdstr_to_num(ext);
+wifi/rtl8xxx_DU/os_dep/linux/ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_DU/os_dep/linux/ioctl_linux.c:			ret = rtw_android_priv_cmd(dev, rq, cmd);
+wifi/rtl8xxx_DU/include/rtw_android.h:int rtw_android_cmdstr_to_num(char *cmdstr);
+wifi/rtl8xxx_DU/include/rtw_android.h:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/rtl8xxx_DU/include/rtw_android.h:int wl_android_wifictrl_func_add(void);
+wifi/rtl8xxx_DU/include/rtw_android.h:void wl_android_wifictrl_func_del(void);
+wifi/rtl8xxx_DU/include/rtw_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/rtl8xxx_DU/include/rtw_pwrctrl.h:	android_early_suspend_t early_suspend;
+wifi/rtl8xxx_DU/include/ioctl_cfg80211.h:	u8 bandroid_scan;
+wifi/rtl8xxx_DU/include/osdep_service.h:#include <linux/android_power.h>
+wifi/rtl8xxx_DU/Makefile:			os_dep/linux/rtw_android.o
+wifi/rtl8xxx_DU/Makefile:CROSS_COMPILE := /media/DATA-2/android-x86/ics-x86_20120130/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/bin/i686-unknown-linux-gnu-
+wifi/rtl8xxx_DU/Makefile:KSRC := /media/DATA-2/android-x86/ics-x86_20120130/out/target/product/generic_x86/obj/kernel
+wifi/rtl8xxx_DU/Makefile:CROSS_COMPILE := /home/android_sdk/nvidia/tegra-16r3-partner-android-4.1_20120723/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_DU/Makefile:KSRC := /home/android_sdk/nvidia/tegra-16r3-partner-android-4.1_20120723/out/target/product/cardhu/obj/KERNEL
+wifi/rtl8xxx_DU/Makefile:CROSS_COMPILE := /home/android_sdk/Telechips/SDK_2304_20110613/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_DU/Makefile:KSRC := /home/android_sdk/Telechips/SDK_2304_20110613/kernel
+wifi/rtl8xxx_DU/Makefile:CROSS_COMPILE := /home/android_sdk/Telechips/v12.06_r1-tcc-android-4.0.4/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_DU/Makefile:KSRC := /home/android_sdk/Telechips/v12.06_r1-tcc-android-4.0.4/kernel
+wifi/rtl8xxx_DU/Makefile:#KSRC := /media/DATA-1/aosp/android-omap-panda-3.0_20120104
+wifi/rtl8xxx_DU/Makefile:CROSS_COMPILE := /media/DATA-1/android-4.0/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_DU/Makefile:KSRC := /media/DATA-1/android-4.0/panda_kernel/omap
+wifi/rtl8xxx_DU/core/rtw_pwrctrl.c:static void rtw_early_suspend(android_early_suspend_t *h)
+wifi/rtl8xxx_DU/core/rtw_pwrctrl.c:static void rtw_late_resume(android_early_suspend_t *h)
+wifi/rtl8xxx_DU/core/rtw_pwrctrl.c:	android_register_early_suspend(&pwrpriv->early_suspend);	
+wifi/rtl8xxx_DU/core/rtw_pwrctrl.c:		android_unregister_early_suspend(&pwrpriv->early_suspend);
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/common/wlan_lib.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/common/wlan_oid.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/nic/nic_cmd_event.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/include/gl_wext_priv.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/include/gl_os.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/include/gl_wext.h: * [WCXRP00000067][MT6620 Wi-Fi][Driver] Support the android+ WAPI function.
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/include/gl_typedef.h: * to support early suspend in android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/platform.c: * to support early suspend in android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/platform.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_init.c: * to support early suspend in android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_init.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_wext.c: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_wext.c: * [WCXRP00000067][MT6620 Wi-Fi][Driver] Support the android+ WAPI function.
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_wext_priv.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_kal.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/os/linux/gl_kal.c: * workaround for fixing request_firmware() failure on android 2.1
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/include/nic/mt5931_reg.h: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/include/nic/mt6620_reg.h: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/include/config.h: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/include/config.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/include/wlan_lib.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/include/wlan_oid.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_ics/drv_wlan/wlan/mgmt/wapi.c: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/broadcm_40181/wl_cfg80211.c:#include <wl_android.h>
+wifi/broadcm_40181/wl_cfg80211.c:	/* android has special hooks to change pm when kernel suspended */
+wifi/broadcm_40181/wl_cfgp2p.c:#include <wl_android.h>
+wifi/broadcm_40181/wl_cfgp2p.c:		ret = wl_android_priv_cmd(ndev, ifr, cmd);
+wifi/broadcm_40181/wl_android.c: * $Id: wl_android.c 372668 2012-12-04 14:07:12Z $
+wifi/broadcm_40181/wl_android.c:#include <wl_android.h>
+wifi/broadcm_40181/wl_android.c:uint android_msg_level = ANDROID_ERROR_LEVEL;
+wifi/broadcm_40181/wl_android.c:		if (android_msg_level & ANDROID_ERROR_LEVEL) { \
+wifi/broadcm_40181/wl_android.c:		if (android_msg_level & ANDROID_TRACE_LEVEL) { \
+wifi/broadcm_40181/wl_android.c:		if (android_msg_level & ANDROID_INFO_LEVEL) { \
+wifi/broadcm_40181/wl_android.c:typedef struct android_wifi_priv_cmd {
+wifi/broadcm_40181/wl_android.c:} android_wifi_priv_cmd;
+wifi/broadcm_40181/wl_android.c: * wl_android_wifi_on
+wifi/broadcm_40181/wl_android.c:static int wl_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:static int wl_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:static int wl_android_set_suspendopt(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:static int wl_android_set_suspendmode(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:static int wl_android_get_band(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:static int wl_android_get_p2p_dev_addr(struct net_device *ndev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c: * Global function definitions (declared in wl_android.h)
+wifi/broadcm_40181/wl_android.c:int wl_android_wifi_on(struct net_device *dev)
+wifi/broadcm_40181/wl_android.c:int wl_android_wifi_off(struct net_device *dev)
+wifi/broadcm_40181/wl_android.c:static int wl_android_set_fwpath(struct net_device *net, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:wl_android_set_pmk(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:wl_android_okc_enable(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:int wl_android_set_roam_mode(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_40181/wl_android.c:int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/broadcm_40181/wl_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/broadcm_40181/wl_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_wifi_on(net);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_set_fwpath(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_wifi_off(net);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_set_suspendmode(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_set_pmk(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_okc_enable(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:		bytes_written = wl_android_set_roam_mode(net, command, priv_cmd.total_len);
+wifi/broadcm_40181/wl_android.c:int wl_android_init(void)
+wifi/broadcm_40181/wl_android.c:int wl_android_exit(void)
+wifi/broadcm_40181/wl_android.c:void wl_android_post_init(void)
+wifi/broadcm_40181/wl_android.c:int wl_android_wifictrl_func_add(void)
+wifi/broadcm_40181/wl_android.c:void wl_android_wifictrl_func_del(void)
+wifi/broadcm_40181/wl_android.c:void* wl_android_prealloc(int section, unsigned long size)
+wifi/broadcm_40181/dhd_linux.c:#include <wl_android.h>
+wifi/broadcm_40181/dhd_linux.c:module_param(android_msg_level, int, 0);
+wifi/broadcm_40181/dhd_linux.c:		ret = wl_android_priv_cmd(net, ifr, cmd);
+wifi/broadcm_40181/dhd_linux.c:			wl_android_wifi_off(net);
+wifi/broadcm_40181/dhd_linux.c:			ret = wl_android_wifi_on(net);
+wifi/broadcm_40181/dhd_linux.c:		/* dhd_prot_init has been called in dhd_bus_start or wl_android_wifi_on */
+wifi/broadcm_40181/dhd_linux.c:	wl_android_wifictrl_func_del();
+wifi/broadcm_40181/dhd_linux.c:	wl_android_exit();
+wifi/broadcm_40181/dhd_linux.c:	wl_android_init();
+wifi/broadcm_40181/dhd_linux.c:		if (wl_android_wifictrl_func_add() < 0) {
+wifi/broadcm_40181/dhd_linux.c:		wl_android_wifictrl_func_del();
+wifi/broadcm_40181/dhd_linux.c:	if (wl_android_wifictrl_func_add() < 0)
+wifi/broadcm_40181/dhd_linux.c:	wl_android_post_init();
+wifi/broadcm_40181/dhd_linux.c:	wl_android_wifictrl_func_del();
+wifi/broadcm_40181/dhd_linux.c:	return (uint8*)wl_android_prealloc(section, size);
+wifi/broadcm_40181/wl_android.h: * $Id: wl_android.h 367273 2012-11-07 09:58:55Z $
+wifi/broadcm_40181/wl_android.h: * or cfg, define them as static in wl_android.c
+wifi/broadcm_40181/wl_android.h: * wl_android_init will be called from module init function (dhd_module_init now), similarly
+wifi/broadcm_40181/wl_android.h: * wl_android_exit will be called from module exit function (dhd_module_cleanup now)
+wifi/broadcm_40181/wl_android.h:int wl_android_init(void);
+wifi/broadcm_40181/wl_android.h:int wl_android_exit(void);
+wifi/broadcm_40181/wl_android.h:void wl_android_post_init(void);
+wifi/broadcm_40181/wl_android.h:int wl_android_wifi_on(struct net_device *dev);
+wifi/broadcm_40181/wl_android.h:int wl_android_wifi_off(struct net_device *dev);
+wifi/broadcm_40181/wl_android.h:int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/broadcm_40181/wl_android.h:int wl_android_wifictrl_func_add(void);
+wifi/broadcm_40181/wl_android.h:void wl_android_wifictrl_func_del(void);
+wifi/broadcm_40181/wl_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/broadcm_40181/dhd_common.c:		printk("android_msg_level=0x%x\n", android_msg_level);
+wifi/broadcm_40181/dhd_common.c:			android_msg_level = int_val;
+wifi/broadcm_40181/dhd_common.c:			printk("android_msg_level=0x%x\n", android_msg_level);
+wifi/broadcm_40181/include/typedefs.h:#ifndef TARGETENV_android
+wifi/broadcm_40181/include/typedefs.h:#endif /* TARGETENV_android */
+wifi/broadcm_40181/dhd.h:extern uint android_msg_level;
+wifi/broadcm_40181/Makefile:	bcmsdh_sdmmc.o dhd_custom_gpio.o sbutils.o wldev_common.o wl_android.o
+wifi/broadcm_4330/wl_cfg80211.c:#include <wl_android.h>
+wifi/broadcm_4330/wl_cfgp2p.c:#include <wl_android.h>
+wifi/broadcm_4330/wl_cfgp2p.c:		ret = wl_android_priv_cmd(ndev, ifr, cmd);
+wifi/broadcm_4330/wl_android.c: * $Id: wl_android.c,v 1.1.4.1.2.14 2011/02/09 01:40:07 Exp $
+wifi/broadcm_4330/wl_android.c:#include <wl_android.h>
+wifi/broadcm_4330/wl_android.c:uint android_msg_level = ANDROID_ERROR_LEVEL;
+wifi/broadcm_4330/wl_android.c:		if (android_msg_level & ANDROID_ERROR_LEVEL) { \
+wifi/broadcm_4330/wl_android.c:		if (android_msg_level & ANDROID_TRACE_LEVEL) { \
+wifi/broadcm_4330/wl_android.c:		if (android_msg_level & ANDROID_INFO_LEVEL) { \
+wifi/broadcm_4330/wl_android.c:typedef struct android_wifi_priv_cmd {
+wifi/broadcm_4330/wl_android.c:} android_wifi_priv_cmd;
+wifi/broadcm_4330/wl_android.c: * wl_android_wifi_on
+wifi/broadcm_4330/wl_android.c:static int wl_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c:static int wl_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c:static int wl_android_set_suspendopt(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c:static int wl_android_get_band(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c:static int wl_android_get_p2p_dev_addr(struct net_device *ndev, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c: * Global function definitions (declared in wl_android.h)
+wifi/broadcm_4330/wl_android.c:int wl_android_wifi_on(struct net_device *dev)
+wifi/broadcm_4330/wl_android.c:int wl_android_wifi_off(struct net_device *dev)
+wifi/broadcm_4330/wl_android.c:static int wl_android_set_fwpath(struct net_device *net, char *command, int total_len)
+wifi/broadcm_4330/wl_android.c:int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/broadcm_4330/wl_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/broadcm_4330/wl_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_wifi_on(net);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_set_fwpath(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_wifi_off(net);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:		bytes_written = wl_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/broadcm_4330/wl_android.c:int wl_android_init(void)
+wifi/broadcm_4330/wl_android.c:int wl_android_exit(void)
+wifi/broadcm_4330/wl_android.c:void wl_android_post_init(void)
+wifi/broadcm_4330/wl_android.c:int wl_android_wifictrl_func_add(void)
+wifi/broadcm_4330/wl_android.c:void wl_android_wifictrl_func_del(void)
+wifi/broadcm_4330/wl_android.c:void* wl_android_prealloc(int section, unsigned long size)
+wifi/broadcm_4330/dhd_linux.c:#include <wl_android.h>
+wifi/broadcm_4330/dhd_linux.c:module_param(android_msg_level, int, 0);
+wifi/broadcm_4330/dhd_linux.c:		ret = wl_android_priv_cmd(net, ifr, cmd);
+wifi/broadcm_4330/dhd_linux.c:		wl_android_wifi_off(net);
+wifi/broadcm_4330/dhd_linux.c:			ret = wl_android_wifi_on(net);
+wifi/broadcm_4330/dhd_linux.c:				DHD_ERROR(("wl_android_wifi_on failed (%d)\n", ret));
+wifi/broadcm_4330/dhd_linux.c:		/* dhd_prot_init has been called in dhd_bus_start or wl_android_wifi_on */
+wifi/broadcm_4330/dhd_linux.c:	wl_android_wifictrl_func_del();
+wifi/broadcm_4330/dhd_linux.c:	wl_android_exit();
+wifi/broadcm_4330/dhd_linux.c:	wl_android_init();
+wifi/broadcm_4330/dhd_linux.c:	if (wl_android_wifictrl_func_add() < 0)
+wifi/broadcm_4330/dhd_linux.c://	wl_android_post_init();
+wifi/broadcm_4330/dhd_linux.c:	wl_android_wifictrl_func_del();
+wifi/broadcm_4330/dhd_linux.c:	return (uint8*)wl_android_prealloc(section, size);
+wifi/broadcm_4330/wl_android.h: * $Id: wl_android.c,v 1.1.4.1.2.14 2011/02/09 01:40:07 Exp $
+wifi/broadcm_4330/wl_android.h: * or cfg, define them as static in wl_android.c
+wifi/broadcm_4330/wl_android.h: * wl_android_init will be called from module init function (dhd_module_init now), similarly
+wifi/broadcm_4330/wl_android.h: * wl_android_exit will be called from module exit function (dhd_module_cleanup now)
+wifi/broadcm_4330/wl_android.h:int wl_android_init(void);
+wifi/broadcm_4330/wl_android.h:int wl_android_exit(void);
+wifi/broadcm_4330/wl_android.h:void wl_android_post_init(void);
+wifi/broadcm_4330/wl_android.h:int wl_android_wifi_on(struct net_device *dev);
+wifi/broadcm_4330/wl_android.h:int wl_android_wifi_off(struct net_device *dev);
+wifi/broadcm_4330/wl_android.h:int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/broadcm_4330/wl_android.h:int wl_android_wifictrl_func_add(void);
+wifi/broadcm_4330/wl_android.h:void wl_android_wifictrl_func_del(void);
+wifi/broadcm_4330/wl_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/broadcm_4330/dhd_sdio.c:extern void wl_android_post_init(void);
+wifi/broadcm_4330/dhd_sdio.c:	wl_android_post_init(); // terence 20120530: fix for preinit function missed called after resume
+wifi/broadcm_4330/dhd_common.c:		android_msg_level = int_val;
+wifi/broadcm_4330/include/typedefs.h:#ifndef TARGETENV_android
+wifi/broadcm_4330/wl_iw.c:#include <wl_android.h>
+wifi/broadcm_4330/dhd.h:extern uint android_msg_level;
+wifi/broadcm_4330/Makefile:	bcmsdh_sdmmc.o dhd_custom_gpio.o sbutils.o wldev_common.o wl_android.o
+wifi/mt7601u/os/linux/cfg80211drv.c:			//rt_android_private_command_entry(pAd, );
+wifi/mt7601u/os/linux/sta_ioctl.c:/* because android will set scan and get scan when interface down */
+wifi/mt7601u/os/linux/sta_ioctl.c:/* because android will set scan and get scan when interface down */
+wifi/mt7601u/os/linux/sta_ioctl.c:			//Status = rt_android_private_command_entry(pAd, net_dev, rq, cmd);
+wifi/mt7601u/os/linux/Makefile.6:	../../os/linux/android_priv_cmd.o\
+wifi/mt7601u/os/linux/Makefile.6:	../../os/linux/android_priv_cmd.o\
+wifi/mt7601u/os/linux/android_priv_cmd.c:int rt_android_private_command_entry(
+wifi/mt7601u/os/linux/Makefile:	../../os/linux/android_priv_cmd.o\
+wifi/mt7601u/os/linux/Makefile:	../../os/linux/android_priv_cmd.o\
+wifi/mt7601u/include/os/rt_linux.h:#define STA_DRIVER_VERSION			"3.0.0.3_android_jb_20130223"
+wifi/mt7601u/include/os/rt_drv.h:#define STA_DRIVER_VERSION			"3.0.0.0_android_20121114"
+wifi/mt7601u/include/rt_os_net.h:int rt_android_private_command_entry(
+wifi/mt7601u/Makefile:	os/linux/android_priv_cmd.o\
+wifi/mt7601u/Makefile:	os/linux/android_priv_cmd.o\
+wifi/mt7601u/sta/connect.c:for android system , if connect ap1 and want to change to ap2 , 
+wifi/rtl8xxx_EU/os_dep/osdep_service.c:static android_suspend_lock_t rtw_suspend_lock ={
+wifi/rtl8xxx_EU/os_dep/osdep_service.c:	android_init_suspend_lock(&rtw_suspend_lock);
+wifi/rtl8xxx_EU/os_dep/osdep_service.c:	android_uninit_suspend_lock(&rtw_suspend_lock);
+wifi/rtl8xxx_EU/os_dep/osdep_service.c:	android_lock_suspend(&rtw_suspend_lock);
+wifi/rtl8xxx_EU/os_dep/osdep_service.c:	android_unlock_suspend(&rtw_suspend_lock);
+wifi/rtl8xxx_EU/os_dep/osdep_service.c:	android_lock_suspend_auto_expire(&rtw_suspend_lock, timeout);
+wifi/rtl8xxx_EU/os_dep/linux/ioctl_cfg80211.c:	if((wdev_to_priv(padapter->rtw_wdev))->bandroid_scan == _FALSE)
+wifi/rtl8xxx_EU/os_dep/linux/ioctl_cfg80211.c:	pwdev_priv->bandroid_scan = _FALSE;
+wifi/rtl8xxx_EU/os_dep/linux/os_intfs.c:	wdev_to_priv(padapter->rtw_wdev)->bandroid_scan = _FALSE;
+wifi/rtl8xxx_EU/os_dep/linux/os_intfs.c:	wdev_to_priv(padapter->rtw_wdev)->bandroid_scan = _FALSE;
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:#include <rtw_android.h>
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:typedef struct android_wifi_priv_cmd {
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:} android_wifi_priv_cmd;
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c: * wl_android_wifi_on
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_cmdstr_to_num(char *cmdstr)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		if(0 == strnicmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_get_macaddr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_set_country(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:	char *country_code = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_COUNTRY]) + 1;
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_get_p2p_dev_addr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_set_block(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:	char *block_value = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_BLOCK]) + 1;
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:	cmd_num = rtw_android_cmdstr_to_num(command);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_on(net);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_off(net);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		(wdev_to_priv(net->ieee80211_ptr))->bandroid_scan = _TRUE;	
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_macaddr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_block(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_country(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:		int skip = strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_SET_AP_WPS_P2P_IE]) + 3;
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:int rtw_android_wifictrl_func_add(void)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:void rtw_android_wifictrl_func_del(void)
+wifi/rtl8xxx_EU/os_dep/linux/rtw_android.c:void *wl_android_prealloc(int section, unsigned long size)
+wifi/rtl8xxx_EU/os_dep/linux/ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_EU/os_dep/linux/ioctl_linux.c:	i = rtw_android_cmdstr_to_num(ext);
+wifi/rtl8xxx_EU/os_dep/linux/ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_EU/os_dep/linux/ioctl_linux.c:			ret = rtw_android_priv_cmd(dev, rq, cmd);
+wifi/rtl8xxx_EU/os_dep/linux/sdio_intf.c:#include <rtw_android.h>
+wifi/rtl8xxx_EU/os_dep/linux/sdio_intf.c:	rtw_android_wifictrl_func_add();
+wifi/rtl8xxx_EU/os_dep/linux/sdio_intf.c:	rtw_android_wifictrl_func_del();
+wifi/rtl8xxx_EU/include/rtw_android.h:int rtw_android_cmdstr_to_num(char *cmdstr);
+wifi/rtl8xxx_EU/include/rtw_android.h:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/rtl8xxx_EU/include/rtw_android.h:int rtw_android_wifictrl_func_add(void);
+wifi/rtl8xxx_EU/include/rtw_android.h:void rtw_android_wifictrl_func_del(void);
+wifi/rtl8xxx_EU/include/rtw_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/rtl8xxx_EU/include/rtw_android.h:static int rtw_android_wifictrl_func_add(void) { return 0; }
+wifi/rtl8xxx_EU/include/rtw_android.h:static void rtw_android_wifictrl_func_del(void) {}
+wifi/rtl8xxx_EU/include/rtw_pwrctrl.h:	android_early_suspend_t early_suspend;
+wifi/rtl8xxx_EU/include/ioctl_cfg80211.h:	u8 bandroid_scan;
+wifi/rtl8xxx_EU/include/osdep_service.h:#include <linux/android_power.h>
+wifi/rtl8xxx_EU/Makefile:			os_dep/linux/rtw_android.o
+wifi/rtl8xxx_EU/Makefile:CROSS_COMPILE := /media/DATA-2/android-x86/ics-x86_20120130/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/bin/i686-unknown-linux-gnu-
+wifi/rtl8xxx_EU/Makefile:KSRC := /media/DATA-2/android-x86/ics-x86_20120130/out/target/product/generic_x86/obj/kernel
+wifi/rtl8xxx_EU/Makefile:CROSS_COMPILE := /home/android_sdk/nvidia/tegra-16r3-partner-android-4.1_20120723/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_EU/Makefile:KSRC := /home/android_sdk/nvidia/tegra-16r3-partner-android-4.1_20120723/out/target/product/cardhu/obj/KERNEL
+wifi/rtl8xxx_EU/Makefile:CROSS_COMPILE := /home/android_sdk/nvidia/tegra-17r9-partner-android-4.2-dalmore_20130131/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-
+wifi/rtl8xxx_EU/Makefile:KSRC := /home/android_sdk/nvidia/tegra-17r9-partner-android-4.2-dalmore_20130131/out/target/product/dalmore/obj/KERNEL
+wifi/rtl8xxx_EU/Makefile:CROSS_COMPILE := /home/android_sdk/Telechips/SDK_2304_20110613/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_EU/Makefile:KSRC := /home/android_sdk/Telechips/SDK_2304_20110613/kernel
+wifi/rtl8xxx_EU/Makefile:CROSS_COMPILE := /home/android_sdk/Telechips/v12.06_r1-tcc-android-4.0.4/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_EU/Makefile:KSRC := /home/android_sdk/Telechips/v12.06_r1-tcc-android-4.0.4/kernel
+wifi/rtl8xxx_EU/Makefile:#KSRC := /media/DATA-1/aosp/android-omap-panda-3.0_20120104
+wifi/rtl8xxx_EU/Makefile:CROSS_COMPILE := /media/DATA-1/android-4.0/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_EU/Makefile:KSRC := /media/DATA-1/android-4.0/panda_kernel/omap
+wifi/rtl8xxx_EU/core/rtw_pwrctrl.c:static void rtw_early_suspend(android_early_suspend_t *h)
+wifi/rtl8xxx_EU/core/rtw_pwrctrl.c:static void rtw_late_resume(android_early_suspend_t *h)
+wifi/rtl8xxx_EU/core/rtw_pwrctrl.c:	android_register_early_suspend(&pwrpriv->early_suspend);	
+wifi/rtl8xxx_EU/core/rtw_pwrctrl.c:		android_unregister_early_suspend(&pwrpriv->early_suspend);
+wifi/atheros_6302/os/linux/ar6000_drv.c:    /* for android builds we call external APIs that handle firmware download and configuration */
+wifi/atheros_6302/os/linux/ar6000_drv.c:/* !!!! Interim android support to make it easier to patch the default driver for
+wifi/atheros_6302/os/linux/ar6000_drv.c: * android use. You must define an external source file ar6000_android.c that handles the following
+wifi/atheros_6302/os/linux/ar6000_drv.c:extern A_STATUS android_ar6k_start(AR_SOFTC_T *ar);
+wifi/atheros_6302/os/linux/ar6000_drv.c:extern void android_module_init(OSDRV_CALLBACKS *osdrvCallbacks);
+wifi/atheros_6302/os/linux/ar6000_drv.c:extern void android_module_exit(void);
+wifi/atheros_6302/os/linux/ar6000_drv.c:    android_module_init(&osdrvCallbacks);
+wifi/atheros_6302/os/linux/ar6000_drv.c:    android_module_exit();
+wifi/atheros_6302/os/linux/ar6000_drv.c:    android_ar6k_start(ar);
+wifi/atheros_6302/os/linux/ar6000_pm.c:extern void android_ar6k_check_wow_status(AR_SOFTC_T *ar, struct sk_buff *skb, A_BOOL isEvent);
+wifi/atheros_6302/os/linux/ar6000_pm.c:        android_ar6k_check_wow_status(ar, skb, isEvent);
+wifi/atheros_6302/os/linux/ar6000_android.c:#define ATH_MODULE_NAME android
+wifi/atheros_6302/os/linux/ar6000_android.c:static ATH_DEBUG_MASK_DESCRIPTION android_debug_desc[] = {
+wifi/atheros_6302/os/linux/ar6000_android.c:ATH_DEBUG_INSTANTIATE_MODULE_VAR(android,
+wifi/atheros_6302/os/linux/ar6000_android.c:                                 "android",
+wifi/atheros_6302/os/linux/ar6000_android.c:                                 ATH_DEBUG_DESCRIPTION_COUNT(android_debug_desc),
+wifi/atheros_6302/os/linux/ar6000_android.c:                                 android_debug_desc);
+wifi/atheros_6302/os/linux/ar6000_android.c:int android_logger_lv(void *module, int mask)
+wifi/atheros_6302/os/linux/ar6000_android.c:static int android_readwrite_file(const A_CHAR *filename, A_CHAR *rbuf, const A_CHAR *wbuf, size_t length)
+wifi/atheros_6302/os/linux/ar6000_android.c:int android_request_firmware(const struct firmware **firmware_p, const char *name,
+wifi/atheros_6302/os/linux/ar6000_android.c:        if ( (ret=android_readwrite_file(filename, NULL, NULL, 0)) < 0) {
+wifi/atheros_6302/os/linux/ar6000_android.c:        if ( (ret=android_readwrite_file(filename, (char*)firmware->data, NULL, length)) != length) {
+wifi/atheros_6302/os/linux/ar6000_android.c:void android_release_firmware(const struct firmware *firmware)
+wifi/atheros_6302/os/linux/ar6000_android.c:static A_STATUS ar6000_android_avail_ev(void *context, void *hif_handle)
+wifi/atheros_6302/os/linux/ar6000_android.c:    if (android_readwrite_file("/sys/devices/platform/" MMC_MSM_DEV "/detect_change", 
+wifi/atheros_6302/os/linux/ar6000_android.c:        android_readwrite_file("/sys/devices/platform/" MMC_MSM_DEV "/polling", NULL, buf, length);
+wifi/atheros_6302/os/linux/ar6000_android.c:static void android_early_suspend(struct early_suspend *h)
+wifi/atheros_6302/os/linux/ar6000_android.c:static void android_late_resume(struct early_suspend *h)
+wifi/atheros_6302/os/linux/ar6000_android.c:void android_module_init(OSDRV_CALLBACKS *osdrvCallbacks)
+wifi/atheros_6302/os/linux/ar6000_android.c:    ar6k_early_suspend.suspend = android_early_suspend;
+wifi/atheros_6302/os/linux/ar6000_android.c:    ar6k_early_suspend.resume  = android_late_resume;
+wifi/atheros_6302/os/linux/ar6000_android.c:    osdrvCallbacks->deviceInsertedHandler = ar6000_android_avail_ev;
+wifi/atheros_6302/os/linux/ar6000_android.c:void android_module_exit(void)
+wifi/atheros_6302/os/linux/ar6000_android.c:A_STATUS android_ar6k_start(AR_SOFTC_T *ar)
+wifi/atheros_6302/os/linux/ar6000_android.c:void android_ar6k_check_wow_status(AR_SOFTC_T *ar, struct sk_buff *skb, A_BOOL isEvent)
+wifi/atheros_6302/os/linux/ar6000_android.c:                android_readwrite_file("/sys/power/state", NULL, buf, len);
+wifi/atheros_6302/os/linux/ar6000_android.c:                android_readwrite_file("/sys/class/leds/lcd-backlight/brightness",
+wifi/atheros_6302/os/linux/include/osapi_linux.h:extern int android_logger_lv(void* module, int mask);
+wifi/atheros_6302/os/linux/include/osapi_linux.h:        logger_write(LOG_MAIN_IDX, android_logger_lv(module, mask), tags, args); \
+wifi/atheros_6302/os/linux/include/osapi_linux.h:int android_request_firmware(const struct firmware **firmware_p, const char *filename,
+wifi/atheros_6302/os/linux/include/osapi_linux.h:void android_release_firmware(const struct firmware *firmware);
+wifi/atheros_6302/os/linux/include/osapi_linux.h:#define A_REQUEST_FIRMWARE(_ppf, _pfile, _dev) android_request_firmware(_ppf, _pfile, _dev)
+wifi/atheros_6302/os/linux/include/osapi_linux.h:#define A_RELEASE_FIRMWARE(_pf) android_release_firmware(_pf)
+wifi/atheros_6302/os/linux/Makefile:   ar6000-objs += ar6000_android.o
+wifi/atheros_6302/Makefile:							os/linux/ar6000_android.o
+wifi/mtk_5931/common/wlan_lib.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/common/wlan_oid.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_5931/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_5931/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_5931/nic/nic_cmd_event.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/include/gl_wext_priv.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/include/gl_os.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/include/gl_wext.h: * [WCXRP00000067][MT6620 Wi-Fi][Driver] Support the android+ WAPI function.
+wifi/mtk_5931/os/linux/include/gl_typedef.h: * to support early suspend in android
+wifi/mtk_5931/os/linux/platform.c: * to support early suspend in android
+wifi/mtk_5931/os/linux/platform.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/gl_init.c: * to support early suspend in android
+wifi/mtk_5931/os/linux/gl_init.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/gl_wext.c: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/mtk_5931/os/linux/gl_wext.c: * [WCXRP00000067][MT6620 Wi-Fi][Driver] Support the android+ WAPI function.
+wifi/mtk_5931/os/linux/gl_wext_priv.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/gl_kal.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/os/linux/gl_kal.c: * workaround for fixing request_firmware() failure on android 2.1
+wifi/mtk_5931/include/nic/mt5931_reg.h: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_5931/include/nic/mt6620_reg.h: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_5931/include/config.h: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/mtk_5931/include/config.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/include/wlan_lib.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/include/wlan_oid.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_5931/mgmt/wapi.c: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/bcm4329/include/typedefs.h:#ifndef TARGETENV_android
+wifi/bcm4329/Makefile_module:KSRC := /home/michael/android2.3/m1-kernel-android
+wifi/bcm4329/dhd/exe/GNUmakefile:ifneq ($(findstring $(TARGETENV), "linux linuxmips linuxmips_be linuxarm linuxarm_le linuxarm_omap android"),)
+wifi/bcm4329/dhd/exe/dhdu_linux.c:#ifndef TARGETENV_android
+wifi/bcm4329/dhd/exe/dhdu_linux.c:#endif /* TARGETENV_android */
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/common/wlan_lib.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/common/wlan_oid.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/nic/nic.c: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/nic/nic_cmd_event.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/include/gl_wext_priv.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/include/gl_os.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/include/gl_wext.h: * [WCXRP00000067][MT6620 Wi-Fi][Driver] Support the android+ WAPI function.
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/include/gl_typedef.h: * to support early suspend in android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/platform.c: * to support early suspend in android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/platform.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_init.c: * to support early suspend in android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_init.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_wext.c: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_wext.c: * [WCXRP00000067][MT6620 Wi-Fi][Driver] Support the android+ WAPI function.
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_wext_priv.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_kal.c: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/os/linux/gl_kal.c: * workaround for fixing request_firmware() failure on android 2.1
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/include/nic/mt6620_reg.h: * [WCXRP00000412] [MT6620 Wi-Fi][FW/Driver] Dump firmware assert info at android kernel log
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/include/config.h: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/include/config.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/include/wlan_lib.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/include/wlan_oid.h: * [WCXRP00000056] [MT6620 Wi-Fi][Driver] NVRAM implementation with Version Check[WCXRP00000086] [MT6620 Wi-Fi][Driver] The mac address is all zero at android
+wifi/mtk_wcn_combo_jb/drv_wlan/mt6620/wlan/mgmt/wapi.c: * [WCXRP00000067] [MT6620 Wi-Fi][Driver] Support the android+ WAPI function
+wifi/AP6xxx/wl_cfg80211.c:#include <wl_android.h>
+wifi/AP6xxx/wl_cfg80211.c:	/* android has special hooks to change pm when kernel suspended */
+wifi/AP6xxx/wl_cfgp2p.c:#include <wl_android.h>
+wifi/AP6xxx/wl_cfgp2p.c:		ret = wl_android_priv_cmd(ndev, ifr, cmd);
+wifi/AP6xxx/wl_android.c: * $Id: wl_android.c 372668 2012-12-04 14:07:12Z $
+wifi/AP6xxx/wl_android.c:#include <wl_android.h>
+wifi/AP6xxx/wl_android.c:uint android_msg_level = ANDROID_ERROR_LEVEL;
+wifi/AP6xxx/wl_android.c:		if (android_msg_level & ANDROID_ERROR_LEVEL) { \
+wifi/AP6xxx/wl_android.c:		if (android_msg_level & ANDROID_TRACE_LEVEL) { \
+wifi/AP6xxx/wl_android.c:		if (android_msg_level & ANDROID_INFO_LEVEL) { \
+wifi/AP6xxx/wl_android.c:typedef struct android_wifi_priv_cmd {
+wifi/AP6xxx/wl_android.c:} android_wifi_priv_cmd;
+wifi/AP6xxx/wl_android.c: * wl_android_wifi_on
+wifi/AP6xxx/wl_android.c:static int wl_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:static int wl_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:static int wl_android_set_suspendopt(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:static int wl_android_set_suspendmode(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:static int wl_android_get_band(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:static int wl_android_get_p2p_dev_addr(struct net_device *ndev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c: * Global function definitions (declared in wl_android.h)
+wifi/AP6xxx/wl_android.c:int wl_android_wifi_on(struct net_device *dev)
+wifi/AP6xxx/wl_android.c:int wl_android_wifi_off(struct net_device *dev)
+wifi/AP6xxx/wl_android.c:static int wl_android_set_fwpath(struct net_device *net, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:wl_android_set_pmk(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:wl_android_okc_enable(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:int wl_android_set_roam_mode(struct net_device *dev, char *command, int total_len)
+wifi/AP6xxx/wl_android.c:int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/AP6xxx/wl_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/AP6xxx/wl_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_wifi_on(net);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_set_fwpath(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_wifi_off(net);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_set_suspendmode(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_set_pmk(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_okc_enable(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:		bytes_written = wl_android_set_roam_mode(net, command, priv_cmd.total_len);
+wifi/AP6xxx/wl_android.c:int wl_android_init(void)
+wifi/AP6xxx/wl_android.c:int wl_android_exit(void)
+wifi/AP6xxx/wl_android.c:void wl_android_post_init(void)
+wifi/AP6xxx/wl_android.c:int wl_android_wifictrl_func_add(void)
+wifi/AP6xxx/wl_android.c:void wl_android_wifictrl_func_del(void)
+wifi/AP6xxx/wl_android.c:void* wl_android_prealloc(int section, unsigned long size)
+wifi/AP6xxx/dhd_linux.c:#include <wl_android.h>
+wifi/AP6xxx/dhd_linux.c:module_param(android_msg_level, int, 0);
+wifi/AP6xxx/dhd_linux.c:		ret = wl_android_priv_cmd(net, ifr, cmd);
+wifi/AP6xxx/dhd_linux.c:			wl_android_wifi_off(net);
+wifi/AP6xxx/dhd_linux.c:			ret = wl_android_wifi_on(net);
+wifi/AP6xxx/dhd_linux.c:		/* dhd_prot_init has been called in dhd_bus_start or wl_android_wifi_on */
+wifi/AP6xxx/dhd_linux.c:	wl_android_wifictrl_func_del();
+wifi/AP6xxx/dhd_linux.c:	wl_android_exit();
+wifi/AP6xxx/dhd_linux.c:	wl_android_init();
+wifi/AP6xxx/dhd_linux.c:		if (wl_android_wifictrl_func_add() < 0) {
+wifi/AP6xxx/dhd_linux.c:		wl_android_wifictrl_func_del();
+wifi/AP6xxx/dhd_linux.c:	if (wl_android_wifictrl_func_add() < 0)
+wifi/AP6xxx/dhd_linux.c://	wl_android_post_init();
+wifi/AP6xxx/dhd_linux.c:	wl_android_wifictrl_func_del();
+wifi/AP6xxx/dhd_linux.c:	return (uint8*)wl_android_prealloc(section, size);
+wifi/AP6xxx/wl_android.h: * $Id: wl_android.h 367273 2012-11-07 09:58:55Z $
+wifi/AP6xxx/wl_android.h: * or cfg, define them as static in wl_android.c
+wifi/AP6xxx/wl_android.h: * wl_android_init will be called from module init function (dhd_module_init now), similarly
+wifi/AP6xxx/wl_android.h: * wl_android_exit will be called from module exit function (dhd_module_cleanup now)
+wifi/AP6xxx/wl_android.h:int wl_android_init(void);
+wifi/AP6xxx/wl_android.h:int wl_android_exit(void);
+wifi/AP6xxx/wl_android.h:void wl_android_post_init(void);
+wifi/AP6xxx/wl_android.h:int wl_android_wifi_on(struct net_device *dev);
+wifi/AP6xxx/wl_android.h:int wl_android_wifi_off(struct net_device *dev);
+wifi/AP6xxx/wl_android.h:int wl_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/AP6xxx/wl_android.h:int wl_android_wifictrl_func_add(void);
+wifi/AP6xxx/wl_android.h:void wl_android_wifictrl_func_del(void);
+wifi/AP6xxx/wl_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/AP6xxx/dhd_sdio.c:extern void wl_android_post_init(void); // terence 20120530: fix for preinit function missed called after resume
+wifi/AP6xxx/dhd_sdio.c:		wl_android_post_init(); // terence 20120530: fix for preinit function missed called after resume
+wifi/AP6xxx/dhd_common.c:		printk("android_msg_level=0x%x\n", android_msg_level);
+wifi/AP6xxx/dhd_common.c:			android_msg_level = int_val;
+wifi/AP6xxx/dhd_common.c:			printk("android_msg_level=0x%x\n", android_msg_level);
+wifi/AP6xxx/include/typedefs.h:#ifndef TARGETENV_android
+wifi/AP6xxx/include/typedefs.h:#endif /* TARGETENV_android */
+wifi/AP6xxx/dhd.h:extern uint android_msg_level;
+wifi/AP6xxx/Makefile:	bcmsdh_sdmmc.o dhd_custom_gpio.o sbutils.o wldev_common.o wl_android.o
+wifi/rtl8xxx_SU/os_dep/linux/ioctl_cfg80211.c:#include <rtw_android.h>
+wifi/rtl8xxx_SU/os_dep/linux/ioctl_cfg80211.c:				ret = rtw_android_priv_cmd(dev, rq, cmd);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:#include <rtw_android.h>
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:typedef struct android_wifi_priv_cmd {
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:} android_wifi_priv_cmd;
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c: * wl_android_wifi_on
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:static int wl_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:static int wl_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:static int wl_android_set_suspendopt(struct net_device *dev, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:static int wl_android_get_band(struct net_device *dev, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:static int wl_android_get_p2p_dev_addr(struct net_device *ndev, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c: * Global function definitions (declared in wl_android.h)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int wl_android_wifi_on(struct net_device *dev)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int wl_android_wifi_off(struct net_device *dev)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int rtw_android_cmdstr_to_num(char *cmdstr)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		if(0 == strnicmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int rtw_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int rtw_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int rtw_android_set_country(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:	char *country_code = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_COUNTRY]) + 1;
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int rtw_android_get_p2p_dev_addr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:	cmd_num = rtw_android_cmdstr_to_num(command);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_on(net);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_off(net);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_country(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		//bytes_written = rtw_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:		int skip = strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_SET_AP_WPS_P2P_IE]) + 3;
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int wl_android_init(void)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int wl_android_exit(void)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int wl_android_post_init(void)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:int wl_android_wifictrl_func_add(void)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:void wl_android_wifictrl_func_del(void)
+wifi/rtl8xxx_SU/os_dep/linux/rtw_android.c:void *wl_android_prealloc(int section, unsigned long size)
+wifi/rtl8xxx_SU/ioctl/rtl871x_ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_SU/ioctl/rtl871x_ioctl_linux.c:		if(0 == strncmp(ext , android_wifi_cmd_str[i], strlen(android_wifi_cmd_str[i])) )
+wifi/rtl8xxx_SU/ioctl/rtl871x_ioctl_linux.c:	i = rtw_android_cmdstr_to_num(ext);
+wifi/rtl8xxx_SU/include/rtw_android.h: * $Id: wl_android.c,v 1.1.4.1.2.14 2011/02/09 01:40:07 Exp $
+wifi/rtl8xxx_SU/include/rtw_android.h: * or cfg, define them as static in wl_android.c
+wifi/rtl8xxx_SU/include/rtw_android.h: * wl_android_init will be called from module init function (dhd_module_init now), similarly
+wifi/rtl8xxx_SU/include/rtw_android.h: * wl_android_exit will be called from module exit function (dhd_module_cleanup now)
+wifi/rtl8xxx_SU/include/rtw_android.h:int wl_android_init(void);
+wifi/rtl8xxx_SU/include/rtw_android.h:int wl_android_exit(void);
+wifi/rtl8xxx_SU/include/rtw_android.h:int wl_android_post_init(void);
+wifi/rtl8xxx_SU/include/rtw_android.h:int wl_android_wifi_on(struct net_device *dev);
+wifi/rtl8xxx_SU/include/rtw_android.h:int wl_android_wifi_off(struct net_device *dev);
+wifi/rtl8xxx_SU/include/rtw_android.h:int rtw_android_cmdstr_to_num(char *cmdstr);
+wifi/rtl8xxx_SU/include/rtw_android.h:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/rtl8xxx_SU/include/rtw_android.h:int wl_android_wifictrl_func_add(void);
+wifi/rtl8xxx_SU/include/rtw_android.h:void wl_android_wifictrl_func_del(void);
+wifi/rtl8xxx_SU/include/rtw_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/rtl8xxx_SU/Makefile:					os_dep/linux/rtw_android.o \
+wifi/rtl8xxx_CU/os_dep/osdep_service.c:static android_suspend_lock_t rtw_suspend_lock ={
+wifi/rtl8xxx_CU/os_dep/osdep_service.c:	android_init_suspend_lock(&rtw_suspend_lock);
+wifi/rtl8xxx_CU/os_dep/osdep_service.c:	android_uninit_suspend_lock(&rtw_suspend_lock);
+wifi/rtl8xxx_CU/os_dep/osdep_service.c:	android_lock_suspend(&rtw_suspend_lock);
+wifi/rtl8xxx_CU/os_dep/osdep_service.c:	android_unlock_suspend(&rtw_suspend_lock);
+wifi/rtl8xxx_CU/os_dep/linux/ioctl_cfg80211.c:	if((wdev_to_priv(padapter->rtw_wdev))->bandroid_scan == _FALSE)
+wifi/rtl8xxx_CU/os_dep/linux/ioctl_cfg80211.c:	pwdev_priv->bandroid_scan = _FALSE;
+wifi/rtl8xxx_CU/os_dep/linux/os_intfs.c:	wdev_to_priv(padapter->rtw_wdev)->bandroid_scan = _FALSE;
+wifi/rtl8xxx_CU/os_dep/linux/os_intfs.c:	wdev_to_priv(padapter->rtw_wdev)->bandroid_scan = _FALSE;
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:#include <rtw_android.h>
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:typedef struct android_wifi_priv_cmd {
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:} android_wifi_priv_cmd;
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c: * wl_android_wifi_on
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:static int wl_android_set_pno_setup(struct net_device *dev, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_cmdstr_to_num(char *cmdstr)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		if(0 == strnicmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_get_rssi(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_get_link_speed(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_get_macaddr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_set_country(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:	char *country_code = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_COUNTRY]) + 1;
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_get_p2p_dev_addr(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_set_block(struct net_device *net, char *command, int total_len)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:	char *block_value = command + strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_BLOCK]) + 1;
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:	android_wifi_priv_cmd priv_cmd;
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:	if (copy_from_user(&priv_cmd, ifr->ifr_data, sizeof(android_wifi_priv_cmd))) {
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:	cmd_num = rtw_android_cmdstr_to_num(command);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_on(net);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_wifi_off(net);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		(wdev_to_priv(net->ieee80211_ptr))->bandroid_scan = _TRUE;	
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_rssi(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_link_speed(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_macaddr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_block(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_suspendopt(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_get_band(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_set_country(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		//bytes_written = wl_android_set_pno_setup(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		bytes_written = rtw_android_get_p2p_dev_addr(net, command, priv_cmd.total_len);
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:		int skip = strlen(android_wifi_cmd_str[ANDROID_WIFI_CMD_SET_AP_WPS_P2P_IE]) + 3;
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:int rtw_android_wifictrl_func_add(void)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:void rtw_android_wifictrl_func_del(void)
+wifi/rtl8xxx_CU/os_dep/linux/rtw_android.c:void *wl_android_prealloc(int section, unsigned long size)
+wifi/rtl8xxx_CU/os_dep/linux/ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_CU/os_dep/linux/ioctl_linux.c:	i = rtw_android_cmdstr_to_num(ext);
+wifi/rtl8xxx_CU/os_dep/linux/ioctl_linux.c:#include <rtw_android.h>
+wifi/rtl8xxx_CU/os_dep/linux/ioctl_linux.c:			ret = rtw_android_priv_cmd(dev, rq, cmd);
+wifi/rtl8xxx_CU/include/rtw_android.h:int rtw_android_cmdstr_to_num(char *cmdstr);
+wifi/rtl8xxx_CU/include/rtw_android.h:int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd);
+wifi/rtl8xxx_CU/include/rtw_android.h:int rtw_android_wifictrl_func_add(void);
+wifi/rtl8xxx_CU/include/rtw_android.h:void rtw_android_wifictrl_func_del(void);
+wifi/rtl8xxx_CU/include/rtw_android.h:void* wl_android_prealloc(int section, unsigned long size);
+wifi/rtl8xxx_CU/include/rtw_android.h:static int rtw_android_wifictrl_func_add(void) { return 0; }
+wifi/rtl8xxx_CU/include/rtw_android.h:static void rtw_android_wifictrl_func_del(void) {}
+wifi/rtl8xxx_CU/include/rtw_pwrctrl.h:	android_early_suspend_t early_suspend;
+wifi/rtl8xxx_CU/include/ioctl_cfg80211.h:	u8 bandroid_scan;
+wifi/rtl8xxx_CU/include/osdep_service.h:#include <linux/android_power.h>
+wifi/rtl8xxx_CU/Makefile:			os_dep/linux/rtw_android.o
+wifi/rtl8xxx_CU/Makefile:CROSS_COMPILE := /media/DATA-2/android-x86/ics-x86_20120130/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/bin/i686-unknown-linux-gnu-
+wifi/rtl8xxx_CU/Makefile:KSRC := /media/DATA-2/android-x86/ics-x86_20120130/out/target/product/generic_x86/obj/kernel
+wifi/rtl8xxx_CU/Makefile:CROSS_COMPILE := /home/android_sdk/nvidia/tegra-16r3-partner-android-4.1_20120723/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_CU/Makefile:KSRC := /home/android_sdk/nvidia/tegra-16r3-partner-android-4.1_20120723/out/target/product/cardhu/obj/KERNEL
+wifi/rtl8xxx_CU/Makefile:CROSS_COMPILE := /home/android_sdk/nvidia/tegra-17r9-partner-android-4.2-dalmore_20130131/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-
+wifi/rtl8xxx_CU/Makefile:KSRC := /home/android_sdk/nvidia/tegra-17r9-partner-android-4.2-dalmore_20130131/out/target/product/dalmore/obj/KERNEL
+wifi/rtl8xxx_CU/Makefile:CROSS_COMPILE := /home/android_sdk/Telechips/SDK_2304_20110613/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_CU/Makefile:KSRC := /home/android_sdk/Telechips/SDK_2304_20110613/kernel
+wifi/rtl8xxx_CU/Makefile:CROSS_COMPILE := /home/android_sdk/Telechips/v12.06_r1-tcc-android-4.0.4/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_CU/Makefile:KSRC := /home/android_sdk/Telechips/v12.06_r1-tcc-android-4.0.4/kernel
+wifi/rtl8xxx_CU/Makefile:#KSRC := /media/DATA-1/aosp/android-omap-panda-3.0_20120104
+wifi/rtl8xxx_CU/Makefile:CROSS_COMPILE := /media/DATA-1/android-4.0/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+wifi/rtl8xxx_CU/Makefile:KSRC := /media/DATA-1/android-4.0/panda_kernel/omap
+wifi/rtl8xxx_CU/core/rtw_pwrctrl.c:static void rtw_early_suspend(android_early_suspend_t *h)
+wifi/rtl8xxx_CU/core/rtw_pwrctrl.c:static void rtw_late_resume(android_early_suspend_t *h)
+wifi/rtl8xxx_CU/core/rtw_pwrctrl.c:	android_register_early_suspend(&pwrpriv->early_suspend);	
+wifi/rtl8xxx_CU/core/rtw_pwrctrl.c:		android_unregister_early_suspend(&pwrpriv->early_suspend);
+wifi/broadcm_4329_new/Makerules.env:# TARGETENV is one of freebsd, sun4, linux, linuxarm, linuxmips, android, cygwin32, win32, or macos
+wifi/broadcm_4329_new/Makerules.env:ifneq ($(findstring "$(TARGETENV)", "freebsd" "linux" "linuxarm" "linuxarm_le" "android" "linuxarm_omap" "linuxmips" "sun4" "cygwin32" "win32" "macos"), )
+wifi/broadcm_4329_new/Makerules.env:    ifneq ($(findstring "$(TARGETENV)", "android"), )
+wifi/broadcm_4329_new/Makerules.env:	TARGETARCH = arm_android
+wifi/broadcm_4329_new/Makerules:	ifeq ($(TARGETARCH), arm_android)
+wifi/broadcm_4329_new/Makerules:	ifeq ($(TARGETENV), android)
+wifi/broadcm_4329_new/Makerules:	ifeq ($(TARGETENV), android)
+wifi/broadcm_4329_new/include/typedefs.h:#ifndef TARGETENV_android
+wifi/broadcm_4329_new/dhdu_linux.c:#ifndef TARGETENV_android
+wifi/broadcm_4329_new/dhdu_linux.c:#endif /* TARGETENV_android */
+wifi/rt5370/MODULE/include/rtmp.h:	android_early_suspend_t	early_suspend;
+wifi/rt5370/MODULE/sta/connect.c:for android system , if connect ap1 and want to change to ap2 , 
+wifi/rt5370/NETIF/os/linux/sta_ioctl.c:/* because android will set scan and get scan when interface down */
+wifi/rt5370/NETIF/os/linux/sta_ioctl.c:/* because android will set scan and get scan when interface down */
+wifi/broadcm_4329/include/typedefs.h:#ifndef TARGETENV_android

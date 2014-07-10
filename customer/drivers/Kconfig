@@ -1,0 +1,11 @@
+#
+# Kconfig to support customer board drivers
+#
+if PLAT_MESON
+menu "Device Drivers"
+
+source "customer/drivers/misc/Kconfig"
+source "customer/drivers/touchscreen/Kconfig"
+
+endmenu
+endif # PLAT_MESON
