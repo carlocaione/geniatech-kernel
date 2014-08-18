@@ -790,6 +790,49 @@ static void reg_on_control(int is_on)
         }
     }
 }
+#ifdef  CONFIG_AM_WIFI
+#define DBG_LINE_INFO()  printk(KERN_INFO "[%s] in\n",__func__)
+
+static void wifi_gpio_init(void)
+{
+//set status
+    //WIFI_EN WIFI_PWREN  WLAN_RST --->out	:0
+
+	gpio_set_status(PAD_GPIOC_6,gpio_status_out);
+	//WIFI_WAKE -->1GPIOX_11   in	:
+    gpio_set_status(PAD_GPIOX_11,gpio_status_in);
+	//set pull-up
+	aml_clr_reg32_mask(P_PAD_PULL_UP_REG4,0xf|1<<8|1<<9|1<<11|1<<12);
+
+	aml_clr_reg32_mask(P_PAD_PULL_UP_REG2,1<<6);
+}
+static void wifi_clock_enable(int is_on)
+{
+
+    //set clk 32k for wifi  
+    //GPIOX_12 (CLK_OUT3)  //reg : 108b  sr_sl:22-25  div:13-19    enable:21
+    DBG_LINE_INFO();
+
+	gpio_set_status(PAD_GPIOX_12,gpio_status_out);			//set  GPIOX_12 out
+	aml_set_reg32_mask(P_HHI_GEN_CLK_CNTL2,1<<22);//set clk source
+	aml_clr_reg32_mask(P_HHI_GEN_CLK_CNTL2,0x3f<<13);//set div ==1
+	aml_set_reg32_mask(P_HHI_GEN_CLK_CNTL2,1<<21);//set enable clk
+	aml_set_reg32_mask(P_PERIPHS_PIN_MUX_3,0x1<<21);//set mode GPIOX_12-->CLK_OUT3
+
+}
+
+
+void wifi_dev_init(void)
+{
+	DBG_LINE_INFO();
+	wifi_clock_enable(1);
+	udelay(200);
+	wifi_gpio_init();
+
+}
+#endif
+
+
 #ifdef CONFIG_CARDREADER
 static struct resource meson_card_resource[] = {
     [0] = {
@@ -1401,11 +1444,15 @@ static void usb_wifi_power(int is_power)
     printk(KERN_INFO "usb_wifi_power %s\n", is_power ? "On" : "Off");
     CLEAR_CBUS_REG_MASK(PERIPHS_PIN_MUX_1,(1<<11));
     CLEAR_CBUS_REG_MASK(PERIPHS_PIN_MUX_0,(1<<18));
-    CLEAR_CBUS_REG_MASK(PREG_PAD_GPIO6_EN_N, (1<<11));
-    if (is_power)//is_power
-         SET_CBUS_REG_MASK(PREG_PAD_GPIO6_O, (1<<11)); // GPIO_E bit 11
+    CLEAR_CBUS_REG_MASK(PREG_PAD_GPIO2_EN_N, (1<<5));
+    if (0)//is_power
+	{
+         SET_CBUS_REG_MASK(PREG_PAD_GPIO2_O, (1<<5));
+	}
     else
-        CLEAR_CBUS_REG_MASK(PREG_PAD_GPIO6_O, (1<<11));
+	{
+        CLEAR_CBUS_REG_MASK(PREG_PAD_GPIO2_O, (1<<5));
+	}
     return 0;
 }
 
@@ -2805,7 +2852,10 @@ static __init void meson_init_machine(void)
     }
 #endif
 
-	set_sata_power(1);
+	set_sata_power(0);
+#ifdef  CONFIG_AM_WIFI     
+     wifi_dev_init();
+#endif   
 }
 static __init void meson_init_early(void)
 {///boot seq 1

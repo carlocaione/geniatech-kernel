@@ -2,6 +2,7 @@ obj-$(CONFIG_RTL8XXX_CU_USB_WIFI) += rtl8xxx_CU/
 obj-$(CONFIG_RTL8XXX_SU_USB_WIFI) += rtl8xxx_SU/
 obj-$(CONFIG_RTL8188EU) += rtl8xxx_EU/
 obj-$(CONFIG_RTL8192DU) += rtl8xxx_DU/
+obj-$(CONFIG_RTL8723AS-VAU) += rtl8723AS/
 obj-$(CONFIG_RT5370) += rt5370/
 obj-$(CONFIG_MT7601U) += mt7601u/
 obj-$(CONFIG_ATH6KL_USB_WIFI) += atheros_ath6kl/

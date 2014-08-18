@@ -409,4 +409,13 @@ config MT7601U
 	  This module adds support for wireless USB dongle based on
 	  MTK 7601u chipset.	  
 
+config RTL8723AS-VAU
+        tristate "Realtek 8723A series Wireless USB Dongle support"
+        default n
+        depends on MAC80211 && AM_WIFI_USB
+        select WIRELESS_EXT
+        select WEXT_PRIV
+        ---help---
+          This module adds support for wireless USB dongle based on
+          Realtek 8723AS chipset.
 endif # AM_WIFI
